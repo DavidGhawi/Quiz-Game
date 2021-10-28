@@ -36,12 +36,12 @@
     <h2>Submitted Questions:</h2>
     <div id="dictionary" class="question_storage"></div>
 
-      <form id="myForm" action="http://127.0.0.1:5000/" method = "get" onsubmit="return loadKey()">
-        <label>Enter chosen question(key number):<br>
-            <input type="number" name="chosenQuestion">
+      <form action="" method = "get">
+        <label>Enter chosen question (key number):<br>
+            <input type="number" name="chosenQuestion" placeholder="Please enter key">
         </label>
-        <button type = "submit"> Add </button>
-        <button type="Remove" name = "button">Remove</button>
+      <button type="Add" name = "button" style="border-radius: 5px;">Add</button>
+      <button type="Remove" name = "button" style="border-radius: 5px;">Remove</button>
     </form>
 
     <h2>Actual Questions:</h2>
