@@ -8,10 +8,6 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
 
-
-@app.route(/inputed_data)
-
-
 submitted_questions = {
     1: "What color is a london bus?"
     2: "What speed does a snake flap its wings?"
@@ -34,6 +30,8 @@ approved_answers = {
     3: "10"
 }
 
+
+# ADD ALL APP ROUTES HERE
 
 
 
