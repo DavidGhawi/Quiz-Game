@@ -25,12 +25,12 @@
    
     <div id="dictionary" class="question_storage"></div>
 
-      <form action="http://127.0.0.1:5000/" method = "get">
+      <form id="myForm" action="http://127.0.0.1:5000/" method = "get" onsubmit="return loadKey()">
         <label>Enter chosen question(key number):<br>
             <input type="number" name="chosenQuestion">
         </label>
-      <button type="Add" name = "button">Add</button>
-      <button type="Remove" name = "button">Remove</button>
+        <button type = "submit"> Add </button>
+        <button type="Remove" name = "button">Remove</button>
     </form>
 
     <div class="question_storage">
@@ -62,6 +62,25 @@
         xhttp.send();
       }
       loaddictionary();
+
+      function loadKey(){
+        var Question = document.forms["myForm"]["chosenQuestion"].value;
+        params = (Question)
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", '/AddContact', true); // true is asynchronous
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState === 4 && xhttp.status === 200) {
+            console.log(xhttp.responseText);
+          } else {
+            console.error(xhttp.statusText);
+            console.error("OK, so why the errors. Try printing the xhttp.readyState here ");
+          }
+        };
+        xhttp.send(params);
+        return false;
+
+      }
     
 
     
