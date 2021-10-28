@@ -47,8 +47,8 @@ approved_answers = {
 
 
 
-@app.route("/AddUserQuestion")
-def AddUserQuestion():
+@app.route("/AddUserQuestion", methods=["POST"])
+def addUserQuestion():
     print("Request to add a question made")
     if request.method == "POST":
         question = request.form["question"]
@@ -59,7 +59,9 @@ def AddUserQuestion():
             question_number = len(submitted_questions) +1
             submitted_questions[question_number] = question
             submitted_answers[question_number] = answer
+        print("QUESTIONS!")
         print(submitted_questions)
+        print("ANSWERS!")
         print(submitted_answers)
     return message
 

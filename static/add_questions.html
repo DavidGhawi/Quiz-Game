@@ -22,7 +22,7 @@
         <h1>Submit your own Questions!</h1>
         <p>Please enter your own questions (and there answers!) below.
           These will then be added once approved by a moderator.</p>
-          <form id="q_add_form" class="forms" action="/Doesntmatter" method="get" onsubmit="return q_add_form()" >
+          <form id="q_add_form" class="forms" action="/Doesntmatter" method="post" onsubmit="return q_add_form()">
             <label> Question to submit:
             <input type="textarea" name="question" value="">
             </label>
@@ -45,10 +45,12 @@
         var answer = document.forms["q_add_form"]["answer"].value;
         params = "question="+question+"&answer="+answer;
         var xhttp = new XMLHttpRequest();
-        xhttp.open("post", '/AddUserQuestion', true);
+        xhttp.open('post', '/AddUserQuestion', true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.onreadystatechange = function() {
           if (xhttp.readyState === 4 && xhttp.status === 200) {
             console.log(xhttp.responseText);
+            console.log("Pointer to see if code is running");
             document.getElementById("was_submit_successfull").innerHTML = xhttp.responseText;
           } else {
             console.error(xhttp.statusText);
