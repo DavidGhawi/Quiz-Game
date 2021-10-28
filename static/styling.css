@@ -1,11 +1,17 @@
+
+* {
+  font-family: system-ui;
+}
+
 aside {
   float: left;
   width: 20%;
   padding: 1%;
   border: 2px solid black;
   border-radius: 10px;
-  height: 100vh;
+  height: 95vh;
   margin-right: 5px;
+  text-align: center;
 }
 
 main {
@@ -15,4 +21,12 @@ main {
 #q_add_form > label {
   display: block;
   margin: 5px;
+}
+
+.sideQuestion {
+  margin-bottom: 0px;
+}
+
+.sideAnswer {
+  margin-top: 2px;
 }
