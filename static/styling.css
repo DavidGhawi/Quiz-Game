@@ -12,7 +12,7 @@ main {
   text-align: center;
 }
 
-#q_input_form > label {
+#q_add_form > label {
   display: block;
   margin: 5px;
 }

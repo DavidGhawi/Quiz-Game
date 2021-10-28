@@ -22,17 +22,44 @@
         <h1>Submit your own Questions!</h1>
         <p>Please enter your own questions (and there answers!) below.
           These will then be added once approved by a moderator.</p>
-          <form id="q_input_form">
+          <form id="q_add_form" class="forms" action="/Doesntmatter" method="get" onsubmit="return q_add_form()" >
             <label> Question to submit:
-            <input type="textarea" name="" value="">
+            <input type="textarea" name="question" value="">
             </label>
 
             <label> Answer to question:
-            <input type="text" name="" value="">
+            <input type="text" name="answer" value="">
             </label>
-            <button type="submit" name="btn_q_input_form">Submit</button>
+            <button type="submit" name="btn_q_add_form">Submit</button>
           </form>
+          <h4 id="was_submit_successfull"></h4>
       </section>
+
+
     </main>
+
+
+    <script>
+      function q_add_form() {
+        var question = document.forms["q_add_form"]["question"].value;
+        var answer = document.forms["q_add_form"]["answer"].value;
+        params = "question="+question+"&answer="+answer;
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("post", '/AddUserQuestion', true);
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState === 4 && xhttp.status === 200) {
+            console.log(xhttp.responseText);
+            document.getElementById("was_submit_successfull").innerHTML = xhttp.responseText;
+          } else {
+            console.error(xhttp.statusText);
+            console.error(xhttp.readyState);
+            console.error("Okay, so this is an error. The ready state above should give clues as to why this is failing");
+          }
+        };
+        xhttp.send(params);
+        return false;
+      }
+
+    </script>
   </body>
 </html>
