@@ -1,0 +1,18 @@
+aside {
+  float: left;
+  width: 20%;
+  padding: 1%;
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 100vh;
+  margin-right: 5px;
+}
+
+main {
+  text-align: center;
+}
+
+#q_input_form > label {
+  display: block;
+  margin: 5px;
+}
