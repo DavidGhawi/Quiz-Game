@@ -12,33 +12,58 @@
             padding: 0;
         }
 
+        h2{
+            margin: 5px;
+            margin-bottom: 0px;
+        }
         .question_storage{
             display: inline-block;
             border: solid black;
-            width: 50%;
-            margin: 15px;
-            padding: 5%;
+            border-radius: 3px;
+            width: 70%;
+            height: 20%;
+            margin: 5px;
+            padding: 7px;
+        }
+        form{
+            margin: 5px;
+            padding: 5px;
         }
     </style>
 </head>
 <body>
    
+    <h2>Submitted Questions:</h2>
     <div id="dictionary" class="question_storage"></div>
 
+<<<<<<< HEAD
       <form id="myForm" action="http://127.0.0.1:5000/" method = "get" onsubmit="return loadKey()">
         <label>Enter chosen question(key number):<br>
             <input type="number" name="chosenQuestion">
         </label>
         <button type = "submit"> Add </button>
         <button type="Remove" name = "button">Remove</button>
+=======
+      <form action="" method = "get">
+        <label>Enter chosen question (key number):<br>
+            <input type="number" name="chosenQuestion">
+        </label>
+      <button type="Add" name = "button" style="border-radius: 5px;">Add</button>
+      <button type="Remove" name = "button" style="border-radius: 5px;">Remove</button>
+>>>>>>> 8e6b95c78d81faaeeede117e0f1cec8e6aa0eea5
     </form>
 
-    <div class="question_storage">
+    <h2>Actual Questions:</h2>
+    <div class="question_storage"></div>
 
-    </div>
+    <form action="" method = "get">
+        <label>Enter chosen question (key number):<br>
+            <input type="number" name="chosenQuestion">
+        </label>
+      <button type="Remove" name = "button" style="border-radius: 5px;">Remove</button>
+    </form>
 
-    
-    
+
     
 </body>
 <script>
