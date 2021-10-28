@@ -6,10 +6,35 @@
     <title>Document</title>
 </head>
 <body>
-    
+      <div id="dictionary"></div>
       <button type="Add" name = "button">Add</button>
       <button type="Remove" name = "button">Remove</button>
     
     
 </body>
+<script>
+    function loaddictionary(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", '/ditionary_display', true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState === 4) {
+            if (xhttp.status === 200) {
+              var text = xhttp.responseText;
+              console.log(text);
+              var directory = JSON.parse(text);
+              console.log(directory);
+              document.getElementById("dictionary").innerHTML = text;
+            } else {
+              console.error(xhttp.statusText);
+            }
+          }
+        };
+        xhttp.send();
+      }
+      loaddictionary();
+    
+
+    
+</script>
 </html>

@@ -9,16 +9,22 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 app = Flask(__name__)
 
 
-@app.route(/inputed_data)
+@app.route("/inputed_data")
+
+@app.route("/ditionary_display")
+def returnDir():
+    if request.method == 'GET':
+        print("getting directory.")
+        return json.dumps(submitted_questions);
 
 
 submitted_questions = {
-    1: "What color is a london bus?"
+    1: "What color is a london bus?",
     2: "What speed does a snake flap its wings?"
 }
 
 submitted_answers = {
-    1: "red"
+    1: "red",
     2: "23 speed"
 }
 
