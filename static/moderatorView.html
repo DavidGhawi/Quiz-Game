@@ -4,11 +4,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+    
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        .question_storage{
+            display: inline-block;
+            border: solid black;
+            width: 50%;
+            margin: 15px;
+            padding: 5%;
+        }
+    </style>
 </head>
 <body>
-      <div id="dictionary"></div>
+   
+    <div id="dictionary" class="question_storage"></div>
+
+      <form action="http://127.0.0.1:5000/" method = "get">
+        <label>Enter chosen question(key number):<br>
+            <input type="number" name="chosenQuestion">
+        </label>
       <button type="Add" name = "button">Add</button>
       <button type="Remove" name = "button">Remove</button>
+    </form>
+
+    <div class="question_storage">
+
+    </div>
+
+    
     
     
 </body>
