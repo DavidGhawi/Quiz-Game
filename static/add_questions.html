@@ -17,6 +17,7 @@
       <p>Please ensure all Q&A's submitted adhere to our safety policy.
       They must not contain swear words or content that may offend/harm others.</p>
       <p>All our submissions are reviewed before publishing so we will ensure this content is prohibited.</p>
+      <p>You must end your submitted question with a "?". Your question will not submit without it</p>
       <h3>Questions of the week</h3>
       <p class="sideQuestion">Q: "What was Twitter's original name?"</p>
       <p class="sideAnswer">A: "twttr"</p>
@@ -33,7 +34,7 @@
           These will then be added once approved by a moderator.</p>
           <form id="q_add_form" class="forms" action="/Doesntmatter" method="post" onsubmit="return q_add_form()">
             <label> Question to submit:
-            <input type="textarea" name="question" value="">
+            <input type="text" name="question" value="" pattern="[a-zA-Z ]+\?" title="Please enter only letters & end the question with a '?'">
             </label>
 
             <label> Answer to question:
