@@ -40,6 +40,10 @@
         .add_button, .remove_button{
           border-radius: 5px;
         }
+
+        #adding_element, #removing_element1, #removing_element2{
+          margin-left: 15px;
+        }
     </style>
 </head>
 <body>
@@ -53,7 +57,7 @@
         <label>Enter chosen question (key number):<br>
             <input type="number" name="chosenQuestion" placeholder="Please enter key">
         </label>
-      <button onclick="loaddictionary()" type="Add" name = "add_button" class="add_button" onclick="add_element()">Add</button>
+      <button onclick="loaddictionary(); add_element()" type="Add" name = "add_button" class="add_button">Add</button>
       <button type="Remove" name = "remove_button" class="remove_button" onclick="remove_element1()">Remove</button>
     </form>
 
