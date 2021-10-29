@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Moderator page</title>
 
     <style>
     
@@ -12,11 +12,18 @@
             padding: 0;
         }
 
+        #main_title_moderator{
+          text-align: center;
+          text-decoration: underline;
+        }
+
         h2{
             margin: 5px;
             margin-bottom: 0px;
+            text-decoration: underline;
         }
         .question_storage{
+          text-align: center;
             display: inline-block;
             border: solid black;
             border-radius: 3px;
@@ -29,30 +36,45 @@
             margin: 5px;
             padding: 5px;
         }
+
+        .add_button, .remove_button{
+          border-radius: 5px;
+        }
+
+        #adding_element, #removing_element1, #removing_element2{
+          margin-left: 15px;
+        }
     </style>
 </head>
 <body>
+
+  <h1 id="main_title_moderator">Moderator</h1> <!--main title-->
    
-    <h2>Submitted Questions:</h2>
+    <h2>Submitted Questions:</h2> <!-- these are the questions submitted-->
     <div id="dictionary" class="question_storage"></div>
 
-      <form action="" method = "get" onsubmit="return loadKey()" id="approveQuestion">
+      <form action="" method = "get" onsubmit="return loadKey()" id="approveQuestion"> <!-- this allows the moderator to add or reject a submitted question-->
         <label>Enter chosen question (key number):<br>
             <input type="number" name="chosenQuestion" placeholder="Please enter key">
         </label>
-        <button onclick="loaddictionary(); loadActualQues()" type="submit" name = "button" style="border-radius: 5px;">Add</button>
-        <button type="Remove" name = "button" style="border-radius: 5px;">Remove</button>
+      <button onclick="loaddictionary(); add_element(); loadActualQues()" type="Add" name = "add_button" class="add_button">Add</button>
+      <button type="Remove" name = "remove_button" class="remove_button" onclick="remove_element1()">Remove</button>
     </form>
 
-    <h2>Actual Questions:</h2>
+    <div id="adding_element"></div>
+    <div id="removing_element1"></div>
+
+    <h2>Actual Questions:</h2> <!-- this is the section where the questiona are added to the quiz-->
     <div id="sumbitted"class="question_storage"></div>
 
-    <form action="" method = "get">
+    <form action="" method = "get"> <!-- this is where the moderator is able to remove a question from the quiz-->
         <label>Enter chosen question (key number):<br>
             <input type="number" name="chosenQuestion" placeholder="Please enter key">
         </label>
-      <button type="Remove" name = "button" style="border-radius: 5px;">Remove</button>
+      <button type="Remove" name = "remove_button" class="remove_button" onclick="remove_element2()">Remove</button>
     </form>
+
+    <div id="removing_element2"></div>
 
 
     
@@ -118,7 +140,18 @@
         return false;
 
       }
-    
+
+      function add_element() {
+      document.getElementById("adding_element").innerHTML = "Adding question and answer to quiz";
+}
+
+      function remove_element1(){
+        document.getElementById("removing_element1").innerHTML = "Removing question and answer from list"
+      }
+
+      function remove_element2(){
+        document.getElementById("removing_element2").innerHTML = "Removing question and answer from list"
+      }
 
     
 </script>
