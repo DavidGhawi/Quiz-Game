@@ -30,7 +30,8 @@ approved_answers = {
     3: "10"
 }
 
-global correctcounter
+correctcounter = 0
+questioncounter = 1
 
 
 # ADD ALL APP ROUTES HERE
@@ -44,12 +45,18 @@ def returnDir():
 @app.route("/Useranswer", methods=["post"])
 def checkans():
     global correctcounter
+    global questioncounter
+    print (correctcounter)
     print("Checking answer")
     if request.method == "POST":
         answer = request.form["answer"]
-        print (answer + "IT WORKED")
-        if answer == approved_answers[1]:
+        print (answer + " IT WORKED")
+        print ("the answer should be: " + approved_answers[questioncounter])
+        if answer == approved_answers[questioncounter]:
             correctcounter += 1
+            print (correctcounter)
+        questioncounter += 1
+
     return answer
 
 @app.route("/LoadQuestions", methods=["GET"])
