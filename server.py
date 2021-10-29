@@ -50,7 +50,6 @@ def addQuestion():
         questionID = int(questionID)
         approved_questions[keyID] = submitted_questions[questionID]
         del submitted_questions[questionID]
-        approved_answers[keyID] = submitted_answers[questionID]
     return message
 
 @app.route("/actualques_display")
