@@ -75,8 +75,6 @@
     </form>
 
     <div id="removing_element2"></div>
-
-
     
 </body>
 <script>
@@ -122,7 +120,6 @@
       }
       loadActualQues();
       
-
       function loadKey(){
         var questionID = document.forms["approveQuestion"]["chosenQuestion"].value;
         params = 'questionID='+questionID
@@ -143,7 +140,7 @@
 
       function add_element() {
       document.getElementById("adding_element").innerHTML = "Adding question and answer to quiz";
-}
+      }
 
       function remove_element1(){
         document.getElementById("removing_element1").innerHTML = "Removing question and answer from list"
