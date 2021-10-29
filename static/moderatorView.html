@@ -49,11 +49,11 @@
     <h2>Submitted Questions:</h2> <!-- these are the questions submitted-->
     <div id="dictionary" class="question_storage"></div>
 
-      <form action="" method = "get"> <!-- this allows the moderator to add or reject a submitted question-->
+      <form action="" method = "get" onsubmit="return loadKey()" id="approveQuestion"> <!-- this allows the moderator to add or reject a submitted question-->
         <label>Enter chosen question (key number):<br>
             <input type="number" name="chosenQuestion" placeholder="Please enter key">
         </label>
-      <button type="Add" name = "add_button" class="add_button" onclick="add_element()">Add</button>
+      <button onclick="loaddictionary()" type="Add" name = "add_button" class="add_button" onclick="add_element()">Add</button>
       <button type="Remove" name = "remove_button" class="remove_button" onclick="remove_element1()">Remove</button>
     </form>
 
@@ -61,7 +61,7 @@
     <div id="removing_element1"></div>
 
     <h2>Actual Questions:</h2> <!-- this is the section where the questiona are added to the quiz-->
-    <div class="question_storage"></div>
+    <div id="sumbitted"class="question_storage"></div>
 
     <form action="" method = "get"> <!-- this is where the moderator is able to remove a question from the quiz-->
         <label>Enter chosen question (key number):<br>
@@ -96,18 +96,18 @@
         xhttp.send();
       }
       loaddictionary();
+      
 
       function loadKey(){
-        var Question = document.forms["myForm"]["chosenQuestion"].value;
-        params = (Question)
+        var questionID = document.forms["approveQuestion"]["chosenQuestion"].value;
+        params = 'questionID='+questionID
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", '/AddContact', true); // true is asynchronous
+        xhttp.open("POST", '/submitted_display', true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.onreadystatechange = function() {
           if (xhttp.readyState === 4 && xhttp.status === 200) {
             console.log(xhttp.responseText);
           } else {
-            console.error(xhttp.statusText);
             console.error("OK, so why the errors. Try printing the xhttp.readyState here ");
           }
         };
