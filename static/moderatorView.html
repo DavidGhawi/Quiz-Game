@@ -3,9 +3,200 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Moderator page</title>
+
+   <!-- <link rel="stylesheet" href="styling.css"> -->
+
+    <style>
+    
+        body{
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        #main_title_moderator{
+          text-align: center;
+          text-decoration: underline;
+        }
+
+        h2{
+            margin: 5px;
+            margin-bottom: 0px;
+            text-decoration: underline;
+        }
+        .question_storage{
+          text-align: center;
+            display: inline-block;
+            border: solid black;
+            border-radius: 3px;
+            width: 70%;
+            height: 20%;
+            margin: 5px;
+            padding: 7px;
+        }
+        form{
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .add_button, .remove_button{
+          border-radius: 5px;
+        }
+
+        #adding_element, #removing_element1, #removing_element2{
+          margin-left: 15px;
+        }
+    </style>
 </head>
+
 <body>
+
+  <h1 id="main_title_moderator">Moderator</h1> <!--main title-->
+   
+    <h2>Submitted Questions:</h2> <!-- these are the questions submitted-->
+    <div id="dictionary" class="question_storage"></div>
+
+      <form action="" method = "get" onsubmit="return loadKey()" id="approveQuestion"> <!-- this allows the moderator to add a submitted question-->
+        <label>Enter chosen question (key number):<br>
+            <input type="number" name="chosenQuestion" placeholder="Please enter key">
+        </label>
+      <button onclick="loaddictionary(); add_element(); loadActualQues()" type="Add" name = "add_button" class="add_button">Add</button>
+
+    </form>
+
+    <form action="" method = "get" onsubmit="return removequestion()" id = "removeQuestion"> <!-- this allows the moderator to remove a submitted question-->
+      <label for="">Enter question to remove (key number): <br>
+        <input type="number" name="chosenQuestion" placeholder="please enter key">
+      </label>
+      <button onclick="loaddictionary(); " type="Remove" name = "remove_button" class="remove_button">Remove</button>
+
+    </form>
+
+    <div id="adding_element"></div> <!-- adding button-->
+    <div id="removing_element1"></div> <!-- first remove button-->
+
+    <h2>Actual Questions:</h2> <!-- this is the section where the questiona are added to the quiz-->
+    <div id="sumbitted"class="question_storage"></div>
+
+    <form action="" method = "get" onsubmit="return actualquestion()" id = "remove_actual_question"> <!-- this is where the moderator is able to remove a question from the quiz-->
+        <label>Enter chosen question (key number):<br>
+            <input type="number" name="chosenQuestion" placeholder="Please enter key">
+        </label>
+      <button type="Remove" name = "remove_button" class="remove_button" onclick="remove_element2(); loaddictionary();">Remove</button>
+    </form>
+
+    <div id="removing_element2"></div> <!-- second removing button-->
     
 </body>
+<script>
+    function loaddictionary(){ 
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", '/ditionary_display', true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState === 4) {
+            if (xhttp.status === 200) {
+              var text = xhttp.responseText;
+              console.log(text);
+              var directory = JSON.parse(text);
+              console.log(directory);
+              document.getElementById("dictionary").innerHTML = text;
+            } else {
+              console.error(xhttp.statusText);
+            }
+          }
+        };
+        xhttp.send();
+      }
+      loaddictionary();
+
+      function loadActualQues(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", '/actualques_display', true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState === 4) {
+            if (xhttp.status === 200) {
+              var text = xhttp.responseText;
+              console.log(text);
+              var directory = JSON.parse(text);
+              console.log(directory);
+              document.getElementById("sumbitted").innerHTML = text;
+            } else {
+              console.error(xhttp.statusText);
+            }
+          }
+        };
+        xhttp.send();
+      }
+      loadActualQues();
+      
+      function removequestion(){
+        var questionID = document.forms["removeQuestion"]["chosenQuestion"].value;
+        params = 'questionID='+questionID
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", '/remove_question', true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState === 4 && xhttp.status === 200) {
+            console.log(xhttp.responseText);
+          } else {
+            console.error("OK, so why the errors. Try printing the xhttp.readyState here ");
+          }
+        };
+        xhttp.send(params);
+        return false;
+
+      }
+      
+      function loadKey(){
+        var questionID = document.forms["approveQuestion"]["chosenQuestion"].value;
+        params = 'questionID='+questionID
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", '/submitted_display', true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState === 4 && xhttp.status === 200) {
+            console.log(xhttp.responseText);
+          } else {
+            console.error("OK, so why the errors. Try printing the xhttp.readyState here ");
+          }
+        };
+        xhttp.send(params);
+        return false;
+
+      }
+      function actualquestion(){
+        var questionID = document.forms["remove_actual_question"]["chosenQuestion"].value;
+        params = 'questionID='+questionID
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", '/remove_actual_question', true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState === 4 && xhttp.status === 200) {
+            console.log(xhttp.responseText);
+          } else {
+            console.error("OK, so why the errors. Try printing the xhttp.readyState here ");
+          }
+        };
+        xhttp.send(params);
+        return false;
+
+      }
+
+      function add_element() {
+      document.getElementById("adding_element").innerHTML = "Adding question and answer to quiz";
+      }
+
+      function remove_element1(){
+        document.getElementById("removing_element1").innerHTML = "Removing question and answer from list"
+      }
+
+      function remove_element2(){
+        document.getElementById("removing_element2").innerHTML = "Removing question and answer from list"
+      }
+
+    
+</script>
 </html>
