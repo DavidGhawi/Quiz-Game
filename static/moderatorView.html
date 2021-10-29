@@ -5,67 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moderator page</title>
 
-   <!-- <link rel="stylesheet" href="styling.css"> -->
+   <link rel="stylesheet" href="styling.css">
 
-    <style>
-    
-        body{
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-
-        #main_title_moderator{
-          text-align: center;
-          text-decoration: underline;
-        }
-
-        h2{
-            margin: 5px;
-            margin-bottom: 0px;
-            text-decoration: underline;
-        }
-        .question_storage{
-          text-align: center;
-            display: inline-block;
-            border: solid black;
-            border-radius: 3px;
-            width: 70%;
-            height: 20%;
-            margin: 5px;
-            padding: 7px;
-        }
-        form{
-            margin: 5px;
-            padding: 5px;
-        }
-
-        .add_button, .remove_button{
-          border-radius: 5px;
-        }
-
-        #adding_element, #removing_element1, #removing_element2{
-          margin-left: 15px;
-        }
-    </style>
+  
 </head>
 
-<body>
+<body class="moderator_body">
+
+  <nav>
+    <ul class="navbar">
+      <li><a class="active" href="Welcome.html">Home</a></li>
+      <li><a href="Quiz.html">Quiz</a></li>
+      <li><a href="add_questions.html">Add Questions</a></li>
+    </ul>
+  </nav>
 
   <h1 id="main_title_moderator">Moderator</h1> <!--main title-->
    
-    <h2>Submitted Questions:</h2> <!-- these are the questions submitted-->
+    <h2 class="mod_titles">Submitted Questions:</h2> <!-- these are the questions submitted-->
     <div id="dictionary" class="question_storage"></div>
 
-      <form action="" method = "get" onsubmit="return loadKey()" id="approveQuestion"> <!-- this allows the moderator to add a submitted question-->
+      <form class="mod_form" action="" method = "get" onsubmit="return loadKey()" id="approveQuestion"> <!-- this allows the moderator to add a submitted question-->
         <label>Enter chosen question (key number):<br>
-            <input type="number" name="chosenQuestion" placeholder="Please enter key">
+            <input type="number" name="chosenQuestion" placeholder="Please enter key" pattern="[0-9]+">
         </label>
       <button onclick="loaddictionary(); add_element(); loadActualQues()" type="Add" name = "add_button" class="add_button">Add</button>
 
     </form>
 
-    <form action="" method = "get" onsubmit="return removequestion()" id = "removeQuestion"> <!-- this allows the moderator to remove a submitted question-->
+    <form class="mod_form" action="" method = "get" onsubmit="return removequestion()" id = "removeQuestion"> <!-- this allows the moderator to remove a submitted question-->
       <label for="">Enter question to remove (key number): <br>
         <input type="number" name="chosenQuestion" placeholder="please enter key">
       </label>
@@ -79,7 +47,7 @@
     <h2>Actual Questions:</h2> <!-- this is the section where the questiona are added to the quiz-->
     <div id="sumbitted"class="question_storage"></div>
 
-    <form action="" method = "get" onsubmit="return actualquestion()" id = "remove_actual_question"> <!-- this is where the moderator is able to remove a question from the quiz-->
+    <form class="mod_form" action="" method = "get" onsubmit="return actualquestion()" id = "remove_actual_question"> <!-- this is where the moderator is able to remove a question from the quiz-->
         <label>Enter chosen question (key number):<br>
             <input type="number" name="chosenQuestion" placeholder="Please enter key">
         </label>
@@ -87,6 +55,14 @@
     </form>
 
     <div id="removing_element2"></div> <!-- second removing button-->
+
+    <footer>
+      <div class="navbar2">
+        <a href="#home" class="active">Social Media</a>
+        <a href="#news">Other Apps</a>
+        <a href="#contact">Feedback</a>
+      </div>
+    </footer>
     
 </body>
 <script>

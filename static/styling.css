@@ -90,3 +90,43 @@ li a {
 li a:hover {
   background-color: #111;
 }
+
+/* moderator styling */
+
+.moderator_body{
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#main_title_moderator{
+text-align: center;
+text-decoration: underline;
+}
+
+.mod_titles{
+  margin: 5px;
+  margin-bottom: 0px;
+  text-decoration: underline;
+}
+.question_storage{
+text-align: center;
+  display: inline-block;
+  border: solid black;
+  border-radius: 3px;
+  width: 70%;
+  height: 20%;
+  margin: 5px;
+  padding: 7px;
+}
+.mod_form{
+  margin: 5px;
+  padding: 5px;
+}
+
+.add_button, .remove_button{
+border-radius: 5px;
+}
+
+#adding_element, #removing_element1, #removing_element2{
+margin-left: 15px;
