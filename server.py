@@ -70,15 +70,6 @@ def returnQuestions():
 
 
 
-
-
-
-
-
-
-
-
-
 @app.route("/AddUserQuestion", methods=["POST"])
 def addUserQuestion():
     print("Request to add a question made")
@@ -96,58 +87,6 @@ def addUserQuestion():
         print("ANSWERS!")
         print(submitted_answers)
     return message
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
