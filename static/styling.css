@@ -31,6 +31,62 @@ main {
   margin-top: 2px;
 }
 
+.navbar2 {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar2 a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar2 a:hover {
+  background: black;
+  color: white;
+}
+
+.navbar2 a.active {
+  color: white;
+}
+
+nav{
+  background-color: #333;
+  display:grid;
+  justify-content: center;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
 /* moderator styling */
 
 .moderator_body{
@@ -70,4 +126,3 @@ border-radius: 5px;
 
 #adding_element, #removing_element1, #removing_element2{
 margin-left: 15px;
-}
