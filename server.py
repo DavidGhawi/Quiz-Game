@@ -61,15 +61,26 @@ def returnQues():
 
 @app.route("/remove_question", methods = ["POST"])
 def remove_question():
-    print('processing Data')
     message ='already there'
     if request.method == 'POST':
         questionID = request.form['questionID']
         message = 'ok'
         questionID = int(questionID)
+        print (questionID)
         del submitted_questions[questionID]
     return message
-        
+
+@app.route("/remove_actual_question", methods = ["POST"])
+def removequestionactual():
+    message ='already there'
+    if request.method == 'POST':
+        questionID = request.form['questionID']
+        message = 'ok'
+        print (questionID)
+        questionID = int(questionID)
+        print(questionID)
+        del approved_questions[questionID]
+    return message
 
 
 
