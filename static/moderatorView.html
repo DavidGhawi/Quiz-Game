@@ -59,7 +59,7 @@
 
       <form action="" method = "get" onsubmit="return loadKey()" id="approveQuestion"> <!-- this allows the moderator to add a submitted question-->
         <label>Enter chosen question (key number):<br>
-            <input type="number" name="chosenQuestion" placeholder="Please enter key">
+            <input type="number" name="chosenQuestion" placeholder="Please enter key" pattern="[0-9]+">
         </label>
       <button onclick="loaddictionary(); add_element(); loadActualQues()" type="Add" name = "add_button" class="add_button">Add</button>
 
