@@ -10,6 +10,7 @@
         body{
             margin: 0;
             padding: 0;
+            text-align: center;
         }
 
         #main_title_moderator{
@@ -47,6 +48,10 @@
     </style>
 </head>
 <body>
+
+  <nav>
+
+  </nav>
 
   <h1 id="main_title_moderator">Moderator</h1> <!--main title-->
    
@@ -121,6 +126,23 @@
       loadActualQues();
       
       function removequestion(){
+        var questionID = document.forms["approveQuestion"]["chosenQuestion"].value;
+        params = 'questionID='+questionID
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", '/remove_question', true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState === 4 && xhttp.status === 200) {
+            console.log(xhttp.responseText);
+          } else {
+            console.error("OK, so why the errors. Try printing the xhttp.readyState here ");
+          }
+        };
+        xhttp.send(params);
+        return false;
+
+      }
+      function loadKey(){
         var questionID = document.forms["approveQuestion"]["chosenQuestion"].value;
         params = 'questionID='+questionID
         var xhttp = new XMLHttpRequest();
