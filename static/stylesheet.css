@@ -133,6 +133,16 @@ aside {
   background-color: #f3f3f3;
 }
 
+img {
+  float: center;
+  float: right;
+  width: 50%;
+  padding: 1%;
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 50vh;
+}
+
 .navbar2 {
   overflow: hidden;
   background-color: #333;
@@ -163,6 +173,19 @@ aside {
 .main {
   padding: 16px;
   margin-bottom: 30px;
+}
+
+.KeyQuestions {
+  font-size: 15px;
+  float: left;
+  width: 20%;
+  padding: 1%;
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 50vh;
+  margin-right: 5px;
+  text-align: center;
+  background-color: #f3f3f3;
 }
 
 /*.flip-card {
