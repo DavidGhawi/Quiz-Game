@@ -57,7 +57,7 @@
     <h2>Submitted Questions:</h2> <!-- these are the questions submitted-->
     <div id="dictionary" class="question_storage"></div>
 
-      <form action="" method = "get" onsubmit="return loadKey()" id="approveQuestion"> <!-- this allows the moderator to add or reject a submitted question-->
+      <form action="" method = "get" onsubmit="return loadKey()" id="approveQuestion"> <!-- this allows the moderator to add a submitted question-->
         <label>Enter chosen question (key number):<br>
             <input type="number" name="chosenQuestion" placeholder="Please enter key">
         </label>
@@ -65,7 +65,7 @@
 
     </form>
 
-    <form action="" method = "get" onsubmit="return removequestion()" id = "removeQuestion">
+    <form action="" method = "get" onsubmit="return removequestion()" id = "removeQuestion"> <!-- this allows the moderator to remove a submitted question-->
       <label for="">Enter question to remove (key number): <br>
         <input type="number" name="chosenQuestion" placeholder="please enter key">
       </label>
@@ -73,8 +73,8 @@
 
     </form>
 
-    <div id="adding_element"></div>
-    <div id="removing_element1"></div>
+    <div id="adding_element"></div> <!-- adding button-->
+    <div id="removing_element1"></div> <!-- first remove button-->
 
     <h2>Actual Questions:</h2> <!-- this is the section where the questiona are added to the quiz-->
     <div id="sumbitted"class="question_storage"></div>
@@ -86,11 +86,11 @@
       <button type="Remove" name = "remove_button" class="remove_button" onclick="remove_element2(); loaddictionary();">Remove</button>
     </form>
 
-    <div id="removing_element2"></div>
+    <div id="removing_element2"></div> <!-- second removing button-->
     
 </body>
 <script>
-    function loaddictionary(){
+    function loaddictionary(){ 
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET", '/ditionary_display', true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
