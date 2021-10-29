@@ -37,7 +37,6 @@ approved_answers = {
 @app.route("/ditionary_display")
 def returnDir():
     if request.method == 'GET':
-        print("getting directory.")
         return json.dumps(submitted_questions);
 
 @app.route("/submitted_display", methods = ["POST"])
@@ -46,15 +45,22 @@ def addQuestion():
     message ='already there'
     if request.method == 'POST':
         questionID = request.form['questionID']
-        print (f"questionID = {questionID}")
         message = 'ok'
         keyID = len(approved_questions) + 1
         questionID = int(questionID)
         approved_questions[keyID] = submitted_questions[questionID]
         del submitted_questions[questionID]
         approved_answers[keyID] = submitted_answers[questionID]
-        del submitted_answers[questionID]
     return message
+
+@app.route("/actualques_display")
+def returnQues():
+    print("getting ques")
+    if request.method == 'GET':
+        print("getting actual question")
+        return json.dumps(approved_questions);
+
+
 
 
 

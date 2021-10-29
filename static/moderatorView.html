@@ -40,7 +40,7 @@
         <label>Enter chosen question (key number):<br>
             <input type="number" name="chosenQuestion" placeholder="Please enter key">
         </label>
-        <button onclick="loaddictionary()" type="submit" name = "button" style="border-radius: 5px;">Add</button>
+        <button onclick="loaddictionary(); loadActualQues()" type="submit" name = "button" style="border-radius: 5px;">Add</button>
         <button type="Remove" name = "button" style="border-radius: 5px;">Remove</button>
     </form>
 
@@ -78,6 +78,27 @@
         xhttp.send();
       }
       loaddictionary();
+
+      function loadActualQues(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", '/actualques_display', true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState === 4) {
+            if (xhttp.status === 200) {
+              var text = xhttp.responseText;
+              console.log(text);
+              var directory = JSON.parse(text);
+              console.log(directory);
+              document.getElementById("sumbitted").innerHTML = text;
+            } else {
+              console.error(xhttp.statusText);
+            }
+          }
+        };
+        xhttp.send();
+      }
+      loadActualQues();
       
 
       function loadKey(){
