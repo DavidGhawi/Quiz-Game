@@ -32,7 +32,77 @@ approved_answers = {
     2 :"Cardiff",
     3: "10"
 }
-@app.route("/inputed_data")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route("/ditionary_display")
 def returnDir():
@@ -81,27 +151,6 @@ def removequestionactual():
         print(questionID)
         del approved_questions[questionID]
     return message
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)
