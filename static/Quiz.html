@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Quiz Page</title>
-    <link rel="stylesheet" href="styling.css">
+    <link rel="stylesheet" href="quizstyle.css">
   </head>
   <body>
 
@@ -13,7 +13,9 @@
 
     <aside>
       <h1>How the quiz works</h1>
-      <p>Enter your answer in the provided text box and see if you get it right.</p>
+      <br><p>Start off by entering the number of questions you wanted to be tested on, then enter which topic you would like to be tested on.</p>
+      <br><p>Under the questions sections your chosen questions will apear, in the 'Enter your answer' text box please enter your well thought out answer.</p>
+      <br><p>The quiz will move on to the next question automatically. At the end your score will appear.</p>
     </aside>
 
     <main>
@@ -32,8 +34,10 @@
 
         </form>
         <br>
+        <h2> Questions </h2>
           <div id="questionsDiv"></div>
           <form method="post" name="quizForm" action= "dontneedthis" onsubmit="return form_function()">
+            <br>
             <label> Enter your answer:
             <input type="textarea" name="answer">
             </label>
@@ -64,7 +68,7 @@
       }
 
       function loadquestions() {
-        console.log("the question counter is " + questioncounter);
+        console.log("the question counter is: " + questioncounter);
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET","/LoadQuestions", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
