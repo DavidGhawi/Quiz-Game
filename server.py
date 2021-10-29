@@ -49,15 +49,11 @@ def addQuestion():
         print (f"questionID = {questionID}")
         message = 'ok'
         keyID = len(approved_questions) + 1
-        print (keyID)
-        print (submitted_questions)
-        print (approved_questions)
         questionID = int(questionID)
         approved_questions[keyID] = submitted_questions[questionID]
         del submitted_questions[questionID]
         approved_answers[keyID] = submitted_answers[questionID]
         del submitted_answers[questionID]
-        print (f" this is approved question{approved_questions}")
     return message
 
 
