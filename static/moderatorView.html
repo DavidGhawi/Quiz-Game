@@ -58,7 +58,7 @@
             <input type="number" name="chosenQuestion" placeholder="Please enter key">
         </label>
       <button onclick="loaddictionary(); add_element(); loadActualQues()" type="Add" name = "add_button" class="add_button">Add</button>
-      <button type="Remove" name = "remove_button" class="remove_button" onclick="remove_element1()">Remove</button>
+      <button onclick="removequestion()" type="Remove" name = "remove_button" class="remove_button" onclick="remove_element1()">Remove</button>
     </form>
 
     <div id="adding_element"></div>
@@ -119,18 +119,12 @@
         xhttp.send();
       }
       loadActualQues();
-<<<<<<< HEAD
       
-=======
-
-    
-
->>>>>>> 63d2c357a578a55df31a562a16bfb70c88a82256
-      function loadKey(){
+      function removequestion(){
         var questionID = document.forms["approveQuestion"]["chosenQuestion"].value;
         params = 'questionID='+questionID
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", '/submitted_display', true);
+        xhttp.open("POST", '/remove_question', true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.onreadystatechange = function() {
           if (xhttp.readyState === 4 && xhttp.status === 200) {
@@ -143,6 +137,8 @@
         return false;
 
       }
+      
+
 
       function add_element() {
       document.getElementById("adding_element").innerHTML = "Adding question and answer to quiz";

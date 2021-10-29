@@ -59,6 +59,18 @@ def returnQues():
         print("getting actual question")
         return json.dumps(approved_questions);
 
+@app.route("/remove_question", methods = ["POST"])
+def remove_question():
+    print('processing Data')
+    message ='already there'
+    if request.method == 'POST':
+        questionID = request.form['questionID']
+        message = 'ok'
+        questionID = int(questionID)
+        del submitted_questions[questionID]
+    return message
+        
+
 
 
 
