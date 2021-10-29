@@ -10,6 +10,7 @@
         body{
             margin: 0;
             padding: 0;
+            text-align: center;
         }
 
         #main_title_moderator{
@@ -47,6 +48,10 @@
     </style>
 </head>
 <body>
+
+  <nav>
+
+  </nav>
 
   <h1 id="main_title_moderator">Moderator</h1> <!--main title-->
    
@@ -119,13 +124,7 @@
         xhttp.send();
       }
       loadActualQues();
-<<<<<<< HEAD
       
-=======
-
-    
-
->>>>>>> 63d2c357a578a55df31a562a16bfb70c88a82256
       function loadKey(){
         var questionID = document.forms["approveQuestion"]["chosenQuestion"].value;
         params = 'questionID='+questionID
