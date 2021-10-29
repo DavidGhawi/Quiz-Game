@@ -1,1 +1,76 @@
 <!-- Adding text to file -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Submit Questions</title>
+    <link rel="stylesheet" href="styling.css">
+  </head>
+  <body>
+
+    <nav>
+
+    </nav>
+
+    <aside>
+      <h1>Guidelines for submission</h1>
+      <p>Please ensure all Q&A's submitted adhere to our safety policy.
+      They must not contain swear words or content that may offend/harm others.</p>
+      <p>All our submissions are reviewed before publishing so we will ensure this content is prohibited.</p>
+      <p>You must end your submitted question with a "?". Your question will not submit without it</p>
+      <h3>Questions of the week</h3>
+      <p class="sideQuestion">Q: "What was Twitter's original name?"</p>
+      <p class="sideAnswer">A: "twttr"</p>
+      <p class="sideQuestion">Q: "What does DC stand for?"</p>
+      <p class="sideAnswer">A: "Detective Comics"</p>
+      <p class="sideQuestion">Q: "What is the Ford Mustang named after?"</p>
+      <p class="sideAnswer">A: "A WWII fighter plane"</p>
+    </aside>
+
+    <main>
+      <section>
+        <h1>Submit your own Questions!</h1>
+        <p>Please enter your own questions (and there answers!) below.
+          These will then be added once approved by a moderator.</p>
+          <form id="q_add_form" class="forms" action="/Doesntmatter" method="post" onsubmit="return q_add_form()">
+            <label> Question to submit:
+            <input type="text" name="question" value="" pattern="[a-zA-Z ]+\?" title="Please enter only letters & end the question with a '?'">
+            </label>
+
+            <label> Answer to question:
+            <input type="text" name="answer" value="">
+            </label>
+            <button type="submit" name="btn_q_add_form">Submit</button>
+          </form>
+          <h4 id="was_submit_successfull"></h4>
+      </section>
+
+
+    </main>
+
+    <script>
+      function q_add_form() {
+        var question = document.forms["q_add_form"]["question"].value;
+        var answer = document.forms["q_add_form"]["answer"].value;
+        params = "question="+question+"&answer="+answer;
+        var xhttp = new XMLHttpRequest();
+        xhttp.open('post', '/AddUserQuestion', true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState === 4 && xhttp.status === 200) {
+            console.log(xhttp.responseText);
+            console.log("Pointer to see if code is running");
+            document.getElementById("was_submit_successfull").innerHTML = xhttp.responseText;
+          } else {
+            console.error(xhttp.statusText);
+            console.error(xhttp.readyState);
+            console.error("Okay, so this is an error. The ready state above should give clues as to why this is failing");
+          }
+        };
+        xhttp.send(params);
+        return false;
+      }
+
+    </script>
+  </body>
+</html>
