@@ -139,5 +139,10 @@ def removequestionactual():
         del approved_questions[questionID]
     return message
 
+    @app.route("/home")
+    def redirectToStatic():
+        print("Grab something from static (redirect)")
+        return redirect("/static/Welcome.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
