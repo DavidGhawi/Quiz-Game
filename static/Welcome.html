@@ -8,17 +8,19 @@
 </head>
 
 <body class="body">
-  <ul>
-    <li><a class="active" href="Welcome.html">Home</a></li>
-    <li><a href="Quiz.html">Quiz</a></li>
-    <li><a href="add_questions.html">Create a Quiz</a></li>
-  </ul>
+  <nav>
+    <ul class="navbar">
+      <li><a class="active" href="Welcome.html">Home</a></li>
+      <li><a href="Quiz.html">Quiz</a></li>
+      <li><a href="add_questions.html">Add Questions</a></li>
+    </ul>
+  </nav>
   <!--color changeable -->
   <h1 class="header"> WELCOME! </h1>
   <h2 class="header2"> Get ready start quizzing! <h2>
 
       <aside>
-        <h3 class ="header3">Moderator ID</h3>
+        <h3 class="header3">Moderator ID</h3>
         <form action="/action_page.php" method="post">
           <div class="container">
             <input type="text" placeholder="Enter ID" name="uname" required>
@@ -28,10 +30,17 @@
             </label>
         </form>
       </aside>
-      <div class="flip-card">
+
+      <footer>
+        <div class="navbar2">
+          <a href="#home" class="active">Social Media</a>
+          <a href="#news">Other Apps</a>
+          <a href="#contact">Feedback</a>
+        </div>
+      </footer>
+      <!--div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <!--add real picture-->
             <img src="img1.png" alt="Example" style=width:300px;height:300px;>
           </div>
           <div class="flip-card-back">
@@ -39,6 +48,7 @@
             <p>create a quiz with us</p>
           </div>
         </div>
-      </div>
+      </div-->
 </body>
+
 </html>

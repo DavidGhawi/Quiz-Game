@@ -16,12 +16,17 @@
   font-size: 15px
 }
 
+nav{
+  background-color: #333;
+  display:grid;
+  justify-content: center;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
 }
 
 li {
@@ -128,7 +133,39 @@ aside {
   background-color: #f3f3f3;
 }
 
-.flip-card {
+.navbar2 {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar2 a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar2 a:hover {
+  background: black;
+  color: white;
+}
+
+.navbar2 a.active {
+  color: white;
+}
+
+.main {
+  padding: 16px;
+  margin-bottom: 30px;
+}
+
+/*.flip-card {
   background-color: transparent;
   position:relative;
   left:350px;
@@ -168,4 +205,4 @@ aside {
   background-color: #2980b9;
   color: white;
   transform: rotateY(180deg);
-}
+} */
