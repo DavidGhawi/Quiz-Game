@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Quiz Page</title>
+    <link rel="stylesheet" href="styling.css">
+  </head>
+  <body>
+
+    <nav>
+
+    </nav>
+
+    <aside>
+      <h1>How the quiz works</h1>
+      <br><p>Start off by entering the number of questions you wanted to be tested on, then enter which topic you would like to be tested on.</p>
+      <br><p>Under the questions sections your chosen questions will apear, in the 'Enter your answer' text box please enter your well thought out answer.</p>
+      <br><p>The quiz will move on to the next question automatically. At the end your score will appear.</p>
+    </aside>
+
+    <main>
+      <section>
+        <h1>Short quiz questions</h1>
+        <p>Please enter your answers in the text boxes below.</p>
+        <form>
+          <label> Enter the number of questions:
+          <input type="text" name="NumQuestions" value="">
+          </label>
+          <br>
+          <label> Enter which topic you would like to be tested on:
+          <input type="text" name="topics" value="ALL">
+          </label>
+          <br>
+
+        </form>
+        <br>
+        <h2> Questions </h2>
+          <div id="questionsDiv"></div>
+          <form method="post" name="quizForm" action= "dontneedthis" onsubmit="return form_function()">
+            <br>
+            <label> Enter your answer:
+            <input type="textarea" name="answer">
+            </label>
+            <button onclick="loadquestions()" type="submit" name="quizForm_btn">Submit</button>
+
+          </form>
+      </section>
+    </main>
+    <script>
+      var questioncounter= 1;
+      function form_function() {
+        var answer = document.forms["quizForm"]["answer"].value;
+
+        params = 'answer='+answer
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("post", '/Useranswer', true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState === 4 && xhttp.status === 200) {
+              console.log(xhttp.responseText);
+            } else {
+              console.error(xhttp.statusText);
+              console.error(xhttp.readyState);
+            }
+        };
+        xhttp.send(params);
+        return false;
+      }
+
+      function loadquestions() {
+        console.log("the question counter is: " + questioncounter);
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET","/LoadQuestions", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState === 4) {
+            if (xhttp.status === 200) {
+              var text = xhttp.responseText;
+              var questions = JSON.parse(text);
+              console.log(questions);
+              console.log("this is the text " + questions);
+              console.log("this is the length " + Object.keys(questions).length);
+              if (questioncounter > Object.keys(questions).length) {
+                document.getElementById("questionsDiv").innerHTML = "Well done, you completed the quiz";
+              }
+              else{
+                document.getElementById("questionsDiv").innerHTML = questions[questioncounter];
+              }
+              questioncounter += 1;
+
+            } else {
+              console.error(xhttp.statusText);
+            }
+          }
+        };
+        xhttp.send();
+      }
+      loadquestions();
+
+    </script>
+  </body>
+</html>
