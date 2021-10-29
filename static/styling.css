@@ -18,10 +18,6 @@ main {
   text-align: center;
 }
 
-.body {
-  background-color: lightblue;
-  }
-
 #q_add_form > label {
   display: block;
   margin: 5px;
