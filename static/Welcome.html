@@ -23,8 +23,9 @@
         <h3 class="header3">Moderator ID</h3>
         <form action="/action_page.php" method="post">
           <div class="container">
-            <input type="text" placeholder="Enter ID" name="uname" required>
-            <button onclick="moderatorView.html">Login</button>
+            <input type="text" placeholder="Enter ID" name="uname" pattern = "admin123">
+          <a href="moderatorView.html"><button type="button">Login</button></a>
+
             <label>
               <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
