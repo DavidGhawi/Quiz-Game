@@ -9,13 +9,6 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 app = Flask(__name__)
 
 
-@app.route("/inputed_data")
-
-@app.route("/ditionary_display")
-def returnDir():
-    if request.method == 'GET':
-        print("getting directory.")
-        return json.dumps(submitted_questions);
 
 
 submitted_questions = {
@@ -39,6 +32,33 @@ approved_answers = {
     2 :"Cardiff",
     3: "10"
 }
+@app.route("/inputed_data")
+
+@app.route("/ditionary_display")
+def returnDir():
+    if request.method == 'GET':
+        print("getting directory.")
+        return json.dumps(submitted_questions);
+
+@app.route("/submitted_display", methods = ["POST"])
+def addQuestion():
+    print('processing Data')
+    message ='already there'
+    if request.method == 'POST':
+        questionID = request.form['questionID']
+        print (f"questionID = {questionID}")
+        message = 'ok'
+        keyID = len(approved_questions) + 1
+        print (keyID)
+        print (submitted_questions)
+        print (approved_questions)
+        questionID = int(questionID)
+        approved_questions[keyID] = submitted_questions[questionID]
+        del submitted_questions[questionID]
+        approved_answers[keyID] = submitted_answers[questionID]
+        del submitted_answers[questionID]
+        print (f" this is approved question{approved_questions}")
+    return message
 
 
 

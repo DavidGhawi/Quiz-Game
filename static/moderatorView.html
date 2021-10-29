@@ -36,16 +36,16 @@
     <h2>Submitted Questions:</h2>
     <div id="dictionary" class="question_storage"></div>
 
-      <form action="" method = "get">
+      <form action="" method = "get" onsubmit="return loadKey()" id="approveQuestion">
         <label>Enter chosen question (key number):<br>
             <input type="number" name="chosenQuestion" placeholder="Please enter key">
         </label>
-      <button type="Add" name = "button" style="border-radius: 5px;">Add</button>
-      <button type="Remove" name = "button" style="border-radius: 5px;">Remove</button>
+        <button onclick="loaddictionary()" type="submit" name = "button" style="border-radius: 5px;">Add</button>
+        <button type="Remove" name = "button" style="border-radius: 5px;">Remove</button>
     </form>
 
     <h2>Actual Questions:</h2>
-    <div class="question_storage"></div>
+    <div id="sumbitted"class="question_storage"></div>
 
     <form action="" method = "get">
         <label>Enter chosen question (key number):<br>
@@ -80,16 +80,15 @@
       loaddictionary();
 
       function loadKey(){
-        var Question = document.forms["myForm"]["chosenQuestion"].value;
-        params = (Question)
+        var questionID = document.forms["approveQuestion"]["chosenQuestion"].value;
+        params = 'questionID='+questionID
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", '/AddContact', true); // true is asynchronous
+        xhttp.open("POST", '/submitted_display', true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.onreadystatechange = function() {
           if (xhttp.readyState === 4 && xhttp.status === 200) {
             console.log(xhttp.responseText);
           } else {
-            console.error(xhttp.statusText);
             console.error("OK, so why the errors. Try printing the xhttp.readyState here ");
           }
         };
