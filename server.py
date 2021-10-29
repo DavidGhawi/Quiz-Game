@@ -40,7 +40,7 @@ questioncounter = 1
 # ADD ALL APP ROUTES HERE
 
 @app.route("/approved_questions", methods=["GET"])
-def returnDir():
+def returnaprrovedques():
     if request.method == 'GET':
         print("getting directory.")
         return json.dumps(approved_questions);
